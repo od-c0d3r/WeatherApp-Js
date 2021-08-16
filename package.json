@@ -1,0 +1,26 @@
+{
+  "name": "weatherapp-js",
+  "version": "1.0.0",
+  "description": "Practice API with Js Promises and Async/Await while Manipulating the DOM.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/od-c0d3r/WeatherApp-Js.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/od-c0d3r/WeatherApp-Js/issues"
+  },
+  "homepage": "https://github.com/od-c0d3r/WeatherApp-Js#readme",
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.50.0",
+    "webpack-cli": "^4.8.0"
+  }
+}
