@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <title>Coat Or Shirt?</title>
+</head>
+
+<body>
+    <div class="container-fluid d-flex flex-column align-items-center pt-5">
+        <h1 class="mb-5">What should you wear today? 🤔</h1>
+        <form>
+            <div class="mb-3">
+                <input id="locationInput" type="text" class="form-control"
+                    placeholder="📍 Send me your Location 🗺️ (Song by Khalid)">
+                <div id="locationHelp" class="form-text">We'll never share your location with anyone else.</div>
+            </div>
+            
+            °C&nbsp;
+            <div class="form-check form-switch form-check-inline">
+                <input id="flexSwitchCheckChecked" class="form-check-input" type="checkbox"  checked>
+                <label class="form-check-label" for="flexSwitchCheckChecked">°F</label>
+            </div>
+
+            <button id="searchBtn" type="submit" class="btn btn-primary float-end">Look up</button>
+        </form>
+
+        <div id="results" class="d-flex flex-column align-items-center">
+        </div>
+
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
