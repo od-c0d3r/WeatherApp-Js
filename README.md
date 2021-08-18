@@ -39,7 +39,7 @@ Visit [Link](https://fr3elancer.github.io/WeatherApp-Js/)
 Contributions, issues, and feature requests are welcome!
 
 # Future Improvments
- - Show diffenrt weather informations.
+ - Show different weather informations.
  - Recommend clothes stores and models pages.
  - Show random information about countries and it's weather.
  
