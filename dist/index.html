@@ -16,26 +16,18 @@
         <h1 class="mb-5">What should you wear today? 🤔</h1>
         <form>
             <div class="mb-3">
-                <input id="locationInput" type="text" class="form-control" placeholder="📍 Send me your Location 🗺️ (Song by Khalid)">
+                <input id="locationInput" type="text" class="form-control"
+                    placeholder="📍 Send me your Location 🗺️ (Song by Khalid)">
                 <div id="locationHelp" class="form-text">We'll never share your location with anyone else.</div>
             </div>
-
-
-            <div class="form-check form-check-inline">
-                <input id="flexRadioDefault1"  class="form-check-input" type="radio" name="flexRadioDefault"checked>
-                <label class="form-check-label" for="flexRadioDefault1">
-                    Fahrenheit
-                </label>
+            
+            °C&nbsp;
+            <div class="form-check form-switch form-check-inline">
+                <input id="flexSwitchCheckChecked" class="form-check-input" type="checkbox"  checked>
+                <label class="form-check-label" for="flexSwitchCheckChecked">°F</label>
             </div>
 
-            <div class="form-check form-check-inline">
-                <input id="flexRadioDefault2" class="form-check-input" type="radio" name="flexRadioDefault">
-                <label class="form-check-label" for="flexRadioDefault2">
-                    Celsius
-                </label>
-            </div>
-
-                <button id="searchBtn" type="submit" class="btn btn-primary float-end">Look up</button>
+            <button id="searchBtn" type="submit" class="btn btn-primary float-end">Look up</button>
         </form>
 
         <div id="results" class="d-flex flex-column align-items-center">

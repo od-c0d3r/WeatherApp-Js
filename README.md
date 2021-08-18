@@ -41,6 +41,10 @@ Contributions, issues, and feature requests are welcome!
  - Show different weather informations.
  - Recommend clothes stores and models pages.
  - Show random information about countries and it's weather.
+ - Keep all the styling logic in CSS files.
+
+ # Acknowledgments
+ - Ideas about how to handle DOM events from [AbdumurodovaZulfizar](https://github.com/AbdumurodovaZulfizar/TodoList-JS/blob/72cc068b0bbf8204ece9f9870bf48f6b09f63d39/src/index.js#L56)
  
 # Show your support
 Give a ⭐ if you like this project!

@@ -42,26 +42,60 @@ var Controller = /*#__PURE__*/function () {
   }
 
   _createClass(Controller, null, [{
+    key: "saveToLocal",
+    value: function saveToLocal(response) {
+      return localStorage.setItem('response', JSON.stringify(response));
+    }
+  }, {
+    key: "getFromLocal",
+    value: function getFromLocal() {
+      var obj = JSON.parse(localStorage.response);
+      return obj;
+    }
+  }, {
+    key: "reset",
+    value: function reset() {
+      var results = document.getElementById('results');
+      results.innerHTML = '';
+      document.body.style.backgroundColor = 'ghostwhite';
+      return localStorage.clear();
+    }
+  }, {
     key: "start",
     value: function start() {
       document.addEventListener('click', function (e) {
         if (e.target.id === 'locationInput') {
-          var results = document.getElementById('results');
-          results.innerHTML = '';
+          Controller.reset();
         }
 
         if (e.target.id === 'searchBtn') {
           e.preventDefault();
           var locationInput = document.getElementById('locationInput');
-          var fahrenheit = document.getElementById('flexRadioDefault1');
+          var fahrenheit = document.getElementById('flexSwitchCheckChecked');
           _server__WEBPACK_IMPORTED_MODULE_0__.default.getResponse(locationInput.value).then(function (response) {
             if (response.cod !== 200) {
               _views__WEBPACK_IMPORTED_MODULE_1__.default.errorMessage(response);
             } else {
-              _views__WEBPACK_IMPORTED_MODULE_1__.default.resualt(response, fahrenheit.checked);
+              Controller.saveToLocal(response);
+              _views__WEBPACK_IMPORTED_MODULE_1__.default.result(response, fahrenheit.checked);
             }
           });
         }
+
+        if (e.target.id === 'flexSwitchCheckChecked' && e.target.checked) {
+          var response = Controller.getFromLocal();
+          _views__WEBPACK_IMPORTED_MODULE_1__.default.result(response, true);
+        }
+
+        if (e.target.id === 'flexSwitchCheckChecked' && e.target.checked === false) {
+          var _response = Controller.getFromLocal();
+
+          _views__WEBPACK_IMPORTED_MODULE_1__.default.result(_response, false);
+        } // if (e.target.id === 'flexRadioDefault2') {
+        //   const response = Controller.getFromLocal();
+        //   View.result(response, false);
+        // }
+
       });
     }
   }]);
@@ -188,6 +222,7 @@ var View = /*#__PURE__*/function () {
     value: function resultDiv() {
       var results = document.getElementById('results');
       var h1 = document.createElement('h1');
+      h1.id = 'tempH1';
       var h2 = document.createElement('h2');
       results.innerHTML = '';
       return [results, h1, h2];
@@ -229,8 +264,8 @@ var View = /*#__PURE__*/function () {
       return results.append(h1, p);
     }
   }, {
-    key: "resualt",
-    value: function resualt(response, fTrue) {
+    key: "result",
+    value: function result(response, fTrue) {
       var _View$resultDiv5 = View.resultDiv(),
           _View$resultDiv6 = _slicedToArray(_View$resultDiv5, 3),
           results = _View$resultDiv6[0],

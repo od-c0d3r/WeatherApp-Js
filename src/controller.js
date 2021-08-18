@@ -26,7 +26,7 @@ export default class Controller {
       if (e.target.id === 'searchBtn') {
         e.preventDefault();
         const locationInput = document.getElementById('locationInput');
-        const fahrenheit = document.getElementById('flexRadioDefault1');
+        const fahrenheit = document.getElementById('flexSwitchCheckChecked');
 
         Server.getResponse(locationInput.value)
           .then((response) => {
@@ -38,11 +38,12 @@ export default class Controller {
             }
           });
       }
-      if (e.target.id === 'flexRadioDefault1') {
+      if (e.target.id === 'flexSwitchCheckChecked' && e.target.checked) {
         const response = Controller.getFromLocal();
         View.result(response, true);
       }
-      if (e.target.id === 'flexRadioDefault2') {
+
+      if (e.target.id === 'flexSwitchCheckChecked' && e.target.checked === false) {
         const response = Controller.getFromLocal();
         View.result(response, false);
       }
