@@ -9,7 +9,7 @@
 - JavaScript
 
 # Demo Link
-Visit [Link](#)
+Visit [Link](https://fr3elancer.github.io/WeatherApp-Js/)
 
 # Getting started
 
@@ -39,6 +39,9 @@ Visit [Link](#)
 Contributions, issues, and feature requests are welcome!
 
 # Future Improvments
-
+ - Show diffenrt weather informations.
+ - Recommend clothes stores and models pages.
+ - Show random information about countries and it's weather.
+ 
 # Show your support
 Give a ⭐ if you like this project!
