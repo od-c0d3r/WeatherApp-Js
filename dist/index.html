@@ -13,30 +13,34 @@
 
 <body>
     <div class="container-fluid d-flex flex-column align-items-center pt-5">
-        <h1 class="mb-5">Enter your Location</h1>
+        <h1 class="mb-5">What should you wear today? 🤔</h1>
         <form>
             <div class="mb-3">
-                <input type="text" class="form-control" id="locationInput" placeholder="Enter Location">
+                <input id="locationInput" type="text" class="form-control" placeholder="📍 Send me your Location 🗺️ (Song by Khalid)">
                 <div id="locationHelp" class="form-text">We'll never share your location with anyone else.</div>
             </div>
 
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <input id="flexRadioDefault1"  class="form-check-input" type="radio" name="flexRadioDefault"checked>
                 <label class="form-check-label" for="flexRadioDefault1">
                     Fahrenheit
                 </label>
             </div>
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                <input id="flexRadioDefault2" class="form-check-input" type="radio" name="flexRadioDefault">
                 <label class="form-check-label" for="flexRadioDefault2">
                     Celsius
                 </label>
             </div>
 
-                <button type="submit" class="btn btn-primary float-end">Search</button>
+                <button id="searchBtn" type="submit" class="btn btn-primary float-end">Look up</button>
         </form>
+
+        <div id="results" class="d-flex flex-column align-items-center">
+        </div>
+
     </div>
     <script src="main.js"></script>
 </body>

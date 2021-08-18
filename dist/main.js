@@ -14,6 +14,250 @@ module.exports = __webpack_require__(/*! babel-register */ "./node_modules/babel
 
 /***/ }),
 
+/***/ "./src/controller.js":
+/*!***************************!*\
+  !*** ./src/controller.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Controller)
+/* harmony export */ });
+/* harmony import */ var _server__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./server */ "./src/server.js");
+/* harmony import */ var _views__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views */ "./src/views.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+
+var Controller = /*#__PURE__*/function () {
+  function Controller() {
+    _classCallCheck(this, Controller);
+  }
+
+  _createClass(Controller, null, [{
+    key: "start",
+    value: function start() {
+      document.addEventListener('click', function (e) {
+        if (e.target.id === 'locationInput') {
+          var results = document.getElementById('results');
+          results.innerHTML = '';
+        }
+
+        if (e.target.id === 'searchBtn') {
+          e.preventDefault();
+          var locationInput = document.getElementById('locationInput');
+          var fahrenheit = document.getElementById('flexRadioDefault1');
+          _server__WEBPACK_IMPORTED_MODULE_0__.default.getResponse(locationInput.value).then(function (response) {
+            if (response.cod !== 200) {
+              _views__WEBPACK_IMPORTED_MODULE_1__.default.errorMessage(response);
+            } else {
+              _views__WEBPACK_IMPORTED_MODULE_1__.default.resualt(response, fahrenheit.checked);
+            }
+          });
+        }
+      });
+    }
+  }]);
+
+  return Controller;
+}();
+
+
+
+/***/ }),
+
+/***/ "./src/server.js":
+/*!***********************!*\
+  !*** ./src/server.js ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Server)
+/* harmony export */ });
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+__webpack_require__(/*! babel-core/register */ "./node_modules/babel-core/register.js");
+
+__webpack_require__(/*! babel-polyfill */ "./node_modules/babel-polyfill/lib/index.js");
+
+var API = '45997ba80da98040a7b69f317ccc26ab';
+
+var Server = /*#__PURE__*/function () {
+  function Server() {
+    _classCallCheck(this, Server);
+  }
+
+  _createClass(Server, null, [{
+    key: "getResponse",
+    value: function () {
+      var _getResponse = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(location) {
+        var getAPI, response;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return fetch("https://api.openweathermap.org/data/2.5/weather?q=".concat(location, "&appid=").concat(API));
+
+              case 2:
+                getAPI = _context.sent;
+                _context.next = 5;
+                return getAPI.json();
+
+              case 5:
+                response = _context.sent;
+                return _context.abrupt("return", response);
+
+              case 7:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      function getResponse(_x) {
+        return _getResponse.apply(this, arguments);
+      }
+
+      return getResponse;
+    }()
+  }]);
+
+  return Server;
+}();
+
+
+
+/***/ }),
+
+/***/ "./src/views.js":
+/*!**********************!*\
+  !*** ./src/views.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ View)
+/* harmony export */ });
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var View = /*#__PURE__*/function () {
+  function View() {
+    _classCallCheck(this, View);
+  }
+
+  _createClass(View, null, [{
+    key: "resultDiv",
+    value: function resultDiv() {
+      var results = document.getElementById('results');
+      var h1 = document.createElement('h1');
+      var h2 = document.createElement('h2');
+      results.innerHTML = '';
+      return [results, h1, h2];
+    }
+  }, {
+    key: "changeBackground",
+    value: function changeBackground(response) {
+      var _View$resultDiv = View.resultDiv(),
+          _View$resultDiv2 = _slicedToArray(_View$resultDiv, 3),
+          results = _View$resultDiv2[0],
+          h2 = _View$resultDiv2[2];
+
+      var temp = parseInt(response.main.temp, 10) - 273;
+
+      if (temp > 30) {
+        document.body.style.backgroundColor = '#FD6468';
+        h2.textContent = '🧊🍹👕🩳';
+      } else if (temp > 10) {
+        document.body.style.backgroundColor = 'lightskyblue';
+        h2.textContent = '😎🍹👕🩳';
+      } else if (temp < 10) {
+        document.body.style.backgroundColor = 'lightskyblue';
+        h2.textContent = '🧤🧣🧥';
+      }
+
+      return results.appendChild(h2);
+    }
+  }, {
+    key: "errorMessage",
+    value: function errorMessage(response) {
+      var _View$resultDiv3 = View.resultDiv(),
+          _View$resultDiv4 = _slicedToArray(_View$resultDiv3, 3),
+          results = _View$resultDiv4[0],
+          h1 = _View$resultDiv4[1],
+          p = _View$resultDiv4[2];
+
+      h1.textContent = 'Ops, Please try again!';
+      p.textContent = response.message;
+      return results.append(h1, p);
+    }
+  }, {
+    key: "resualt",
+    value: function resualt(response, fTrue) {
+      var _View$resultDiv5 = View.resultDiv(),
+          _View$resultDiv6 = _slicedToArray(_View$resultDiv5, 3),
+          results = _View$resultDiv6[0],
+          h1 = _View$resultDiv6[1],
+          p = _View$resultDiv6[2];
+
+      if (fTrue) {
+        var fTemp = (parseInt(response.main.temp, 10) - 273) * 9 / 5 + 32;
+        h1.textContent = "".concat(fTemp, "\xB0F");
+        View.changeBackground(response);
+      } else {
+        var cTemp = parseInt(response.main.temp, 10) - 273;
+        h1.textContent = "".concat(cTemp, "\xB0C");
+        View.changeBackground(response);
+      }
+
+      return results.appendChild(h1, p);
+    }
+  }]);
+
+  return View;
+}();
+
+
+
+/***/ }),
+
 /***/ "./node_modules/babel-polyfill/lib/index.js":
 /*!**************************************************!*\
   !*** ./node_modules/babel-polyfill/lib/index.js ***!
@@ -10778,6 +11022,18 @@ module.exports = __webpack_require__(/*! ./modules/_core */ "./node_modules/core
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -10790,56 +11046,34 @@ module.exports = __webpack_require__(/*! ./modules/_core */ "./node_modules/core
 /******/ 		})();
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
+"use strict";
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _controller__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./controller */ "./src/controller.js");
 
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-// api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-__webpack_require__(/*! babel-core/register */ "./node_modules/babel-core/register.js");
-
-__webpack_require__(/*! babel-polyfill */ "./node_modules/babel-polyfill/lib/index.js");
-
-function getResponse() {
-  return _getResponse.apply(this, arguments);
-}
-
-function _getResponse() {
-  _getResponse = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-    var getAPI, response;
-    return regeneratorRuntime.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return fetch('https://api.openweathermap.org/data/2.5/weather?q=alexandria&appid=45997ba80da98040a7b69f317ccc26ab');
-
-          case 2:
-            getAPI = _context.sent;
-            _context.next = 5;
-            return getAPI.json();
-
-          case 5:
-            response = _context.sent;
-            console.log(response);
-
-          case 7:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-  return _getResponse.apply(this, arguments);
-}
-
-getResponse();
+_controller__WEBPACK_IMPORTED_MODULE_0__.default.start();
 })();
 
 /******/ })()
