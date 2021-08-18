@@ -23,8 +23,7 @@ Visit [Link](https://fr3elancer.github.io/WeatherApp-Js/)
 # Getting Started 
 
 - Open your Terminal and Navigate to the project destination and type `npm install`
-- Run `npm run build`
-- You can now open the `index.html` file at `dist` folder in any browser.
+- Run `npm start`
 
 # Authors
 

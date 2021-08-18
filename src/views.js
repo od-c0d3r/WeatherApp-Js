@@ -2,6 +2,7 @@ export default class View {
   static resultDiv() {
     const results = document.getElementById('results');
     const h1 = document.createElement('h1');
+    h1.id = 'tempH1';
     const h2 = document.createElement('h2');
     results.innerHTML = '';
     return [results, h1, h2];
@@ -32,7 +33,7 @@ export default class View {
     return results.append(h1, p);
   }
 
-  static resualt(response, fTrue) {
+  static result(response, fTrue) {
     const [results, h1, p] = View.resultDiv();
 
     if (fTrue) {

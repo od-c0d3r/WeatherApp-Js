@@ -2,11 +2,26 @@ import Server from './server';
 import View from './views';
 
 export default class Controller {
+  static saveToLocal(response) {
+    return localStorage.setItem('response', JSON.stringify(response));
+  }
+
+  static getFromLocal() {
+    const obj = JSON.parse(localStorage.response);
+    return obj;
+  }
+
+  static reset() {
+    const results = document.getElementById('results');
+    results.innerHTML = '';
+    document.body.style.backgroundColor = 'ghostwhite';
+    return localStorage.clear();
+  }
+
   static start() {
     document.addEventListener('click', (e) => {
       if (e.target.id === 'locationInput') {
-        const results = document.getElementById('results');
-        results.innerHTML = '';
+        Controller.reset();
       }
       if (e.target.id === 'searchBtn') {
         e.preventDefault();
@@ -18,9 +33,18 @@ export default class Controller {
             if (response.cod !== 200) {
               View.errorMessage(response);
             } else {
-              View.resualt(response, fahrenheit.checked);
+              Controller.saveToLocal(response);
+              View.result(response, fahrenheit.checked);
             }
           });
+      }
+      if (e.target.id === 'flexRadioDefault1') {
+        const response = Controller.getFromLocal();
+        View.result(response, true);
+      }
+      if (e.target.id === 'flexRadioDefault2') {
+        const response = Controller.getFromLocal();
+        View.result(response, false);
       }
     });
   }

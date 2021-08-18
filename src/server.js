@@ -1,7 +1,7 @@
 require('babel-core/register');
 require('babel-polyfill');
 
-const API = 'PUT YOUR API HERE';
+const API = '45997ba80da98040a7b69f317ccc26ab';
 
 export default class Server {
   static async getResponse(location) {
