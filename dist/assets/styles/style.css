@@ -1,4 +1,8 @@
-#divContainer {
-    height: 100vh;
-};
+body {
+    background-color: ghostwhite;
+    height: 100%;
+}
 
+form {
+    width: 500px;
+}
